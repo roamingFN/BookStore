@@ -1,0 +1,33 @@
+<div class="boxCenter">
+
+	<div class="jumbotron">
+		<div class="container">
+			<p>Find Book <input ng-model="find">
+			<button type="button" class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> Search</button></p>
+		</div>
+	</div>
+
+	<div class="container" style="width:auto">
+		
+		<div class="add" >
+			<button data-toggle="modal" data-target="#popup-Add-Book" type="button" class="btn-lg btn-primary" ng-click="showAddModal()">Add Book</button>
+		</div>
+
+		<div ng-repeat="book in booklist" class="col-sm-6 col-md-2">
+			<div class="thumbnail" style="height: 10%">
+				<a class="pointer" ng-click="delete(book._id)">
+					<i class="glyphicon glyphicon-remove-circle" aria-hidden="true"></i>
+				</a>
+				<a class="pointer" data-toggle="modal" ng-click="showBook(book._id)" data-target="#popup">
+					<img style="max-height: 150px;" ng-src="{{book.cover}}">
+				</a><br>
+				<p>Title: {{book.title}}</p>
+				<p>Author: {{book.author}}</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal-->
+	<div ng-include="'updateModal.html'"></div>
+	<div ng-include="'addModalBook.html'"></div>
+</div>
