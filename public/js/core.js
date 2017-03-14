@@ -48,10 +48,13 @@ bookApp.controller('bookController' ,function ($scope, $http) {
 	}
 
 	$scope.search = function() {
-		if (typeof($scope.find)!='undefined') {
+		if ((typeof($scope.find)!='undefined') && ($scope.find!='')) {
 			$http.get('/findbook/'+$scope.find).then(function (res) {	
 				$scope.booklist = res.data;
 			});
+		}
+		else {
+			initBooklist();
 		}
 	}
 
