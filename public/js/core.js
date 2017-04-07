@@ -11,6 +11,25 @@ bookApp.config(function($routeProvider) {
     })
 });
 
+bookApp.controller('menuBarController', function ($scope) {
+	$scope.homeClass = 'active';
+	$scope.aboutClass = '';
+
+	$scope.refreshPage = function () {
+		location.reload();
+	}
+
+	$scope.toHome = function() {
+		$scope.homeClass = 'active';
+		$scope.aboutClass = '';
+	}
+
+	$scope.toAbout = function() {
+		$scope.homeClass = '';
+		$scope.aboutClass = 'active';
+	}
+});
+
 bookApp.controller('bookController' ,function ($scope, $http) {
 	function initBooklist () {
 		$http.get('/booklist').then(function (res) {
